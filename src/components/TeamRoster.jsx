@@ -1,10 +1,12 @@
 import { Container } from "react-bootstrap";
 import TeamRosterLine from "./TeamRosterLine";
+import playersData from "../data/players.json";
 
 export default function TeamRoster({ fantasyTeam }) {
   if (!fantasyTeam) return null;
 
-  const fullPlayers = fantasyTeam.players;
+  const fullPlayers = fantasyTeam.players
+    .map((id) => playersData[id]);
 
   return (
     <Container className="mt-3">
