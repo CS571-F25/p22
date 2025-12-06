@@ -1,22 +1,25 @@
-import { Container } from "react-bootstrap";
-import TeamRosterLine from "./TeamRosterLine";
-import playersData from "../data/players.json";
+import { Card, ListGroup } from "react-bootstrap";
 
-export default function TeamRoster({ fantasyTeam }) {
-  if (!fantasyTeam) return null;
-
-  const fullPlayers = fantasyTeam.players
-    .map((id) => playersData[id]);
+export default function TeamRoster({ team }) {
+  if (!team || !team.players) return null;
 
   return (
-    <Container className="mt-3">
-      {fullPlayers.length === 0 ? (
-        <p className="text-center text-muted">No players on this team yet.</p>
-      ) : (
-        fullPlayers.map((player) => (
-          <TeamRosterLine key={player.player_id} player={player} />
-        ))
-      )}
-    </Container>
+    <Card className="shadow-sm mb-4">
+      <Card.Body>
+        <Card.Title>{team.name}</Card.Title>
+
+        <ListGroup className="mt-3">
+          {team.players.length === 0 ? (
+            <ListGroup.Item>No players drafted yet</ListGroup.Item>
+          ) : (
+            team.players.map((player) => (
+              <ListGroup.Item key={player.player_id}>
+                {player.full_name} — {player.position}
+              </ListGroup.Item>
+            ))
+          )}
+        </ListGroup>
+      </Card.Body>
+    </Card>
   );
 }

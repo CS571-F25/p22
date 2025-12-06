@@ -12,6 +12,7 @@ export default function NavBar() {
             <Nav.Link as={NavLink} to="/" end>Home</Nav.Link>
             <Nav.Link as={NavLink} to="/draft">Draft</Nav.Link>
             <Nav.Link as={NavLink} to="/teams">Teams</Nav.Link>
+            <Nav.Link as ={NavLink} to="/matchup">Matchup</Nav.Link>
             <Nav.Link as={NavLink} to="/settings">Settings</Nav.Link>
           </Nav>
         </Navbar.Collapse>
